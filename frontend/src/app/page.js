@@ -6,9 +6,9 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <main className = "min-h-screen flex items-center justify-center bg-gray-100">
-        <h1 className = "text-4xl font-bold text-blue-500">
-          Welcome to Next.js with Tailwind CSS!
+      <main className = "min-h-screen flex items-center justify-center bg-gray-300">
+        <h1 className = "text-4xl font-bold text-black">
+          Hello World!
         </h1>
         <ProductList />
       </main>
