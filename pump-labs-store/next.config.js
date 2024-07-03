@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        remotePatterns: [{hostname: "images.unsplash.com"}],
+        remotePatterns: [
+            {hostname: "images.unsplash.com"},
+            {hostname: "lh3.googleusercontent.com"},
+        ],
     },
     experimental: {
         serverActions: true //allows server actions
@@ -9,4 +12,4 @@ const nextConfig = {
     },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
