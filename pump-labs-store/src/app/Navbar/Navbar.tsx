@@ -16,7 +16,7 @@ async function searchProducts(formData: FormData) {
 
     if (searchQuery) {
         redirect("/search?query=" + searchQuery);
-    }
+    } //error occurs here when searching "/;lasjd"
 }
 
 export default async function Navbar() {
