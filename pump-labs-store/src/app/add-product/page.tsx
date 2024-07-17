@@ -8,6 +8,8 @@ export const metadata = {
     title: "Add Product - Pump Labs LLC"
 }
 
+const allowedUsers = process.env.ALLOWED_USERS?.split(",") || []; //stores allowed emails
+
 async function addProduct(formData: FormData) {
     "use server";
 
@@ -16,6 +18,11 @@ async function addProduct(formData: FormData) {
     if(!session) {
         redirect("/api/auth/signin?callbackUrl=/add-product");
     }
+
+    if(!session.user.email || !allowedUsers.includes(session.user.email)) { //redirects to homepage
+        redirect("/");
+    }
+
 
     const name = formData.get("name")?.toString();
     const description = formData.get("description")?.toString();
@@ -38,6 +45,10 @@ export default async function AddProductPage() {
     const session = await getServerSession(authOptions);
     if (!session) {
         redirect("/api/auth/signin?callbackUrl=/add-product");
+    }
+
+    if (!session.user.email || !allowedUsers.includes(session.user.email)) {
+        redirect("/"); //redirects to homepage
     }
 
     return(
